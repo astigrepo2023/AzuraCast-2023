@@ -12,7 +12,7 @@ jobs:
       - uses: depot/build-push-action@v1
         with:
           # if no depot.json file is at the root of your repo, you must specify the project id
-          project: <your-depot-project-id>
+          project: <tqf0zd7f9c>
           context: .
           push: true
           tags: |
