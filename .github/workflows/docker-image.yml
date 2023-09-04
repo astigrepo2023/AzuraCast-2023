@@ -1,0 +1,21 @@
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    # Set permissions if you're using OIDC token authentication
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v3
+      # The depot CLI still needs to be available in your workflow
+      - uses: depot/setup-action@v1
+      - uses: depot/build-push-action@v1
+        with:
+          # if no depot.json file is at the root of your repo, you must specify the project id
+          project: <your-depot-project-id>
+          context: .
+          push: true
+          tags: |
+            ...
+          # Pass project token or user access token if you're not using OIDC token authentication
+          token: ${{ secrets.DEPOT_TOKEN }}
